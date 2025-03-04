@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ProgressBar from "./components/ProgressBar";
 import { Navbar } from "./components/Navbar";
 import Footer from "./components/Footer";
+import ProgressBar from "./components/ProgressBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        suppressHydrationWarning
+      suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-gray-100`}
       >
         <ProgressBar /> {/* Luôn chạy khi chuyển route */}

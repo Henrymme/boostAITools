@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
 import { ToolsCard } from "@/lib/interface";
 import { fetchToolsData } from "@/lib/data";
+import Image from "next/image";
 
 const Rating = ({ rating }) => {
   return (
@@ -27,7 +28,7 @@ export default async function ToolDetail(
   const params = await props.params;
   const tool = tools?.find((t) => t._id === params.id);
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-[#0F172A] text-[#E2E8F0] rounded-lg shadow-lg w-full min-h-screen">
+    <div className="max-w-4xl mx-auto p-6 bg-[#0F172A] text-[#E2E8F0] rounded-lg shadow-lg w-full h-screen">
       <Breadcrumbs toolName={tool?.name} />
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
         <img src={tool?.imageUrl} alt={tool?.title} className="w-full max-w-[250px] h-auto rounded-lg shadow-md border border-gray-700" />

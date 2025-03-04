@@ -15,7 +15,7 @@ export default async function ToolList({search, categories}: {search:string, cat
       {tools.map((tool) => (
         <div
         key={tool._id}
-        className="bg-gray-800 shadow-lg rounded-2xl p-5 border border-gray-700 hover:shadow-2xl transition-all flex flex-col text-sm hover:border-[#00ADB5]"
+        className="bg-[gray-800] shadow-lg rounded-2xl p-5 border border-gray-700 hover:shadow-2xl transition-all flex flex-col text-sm hover:border-[#00ADB5]"
       >
         {/* Image Section */}
         <Link href={`/tools/${tool._id}`} className="relative w-full aspect-square bg-[#111827] dark:bg-gray-800 rounded-lg overflow-hidden">
