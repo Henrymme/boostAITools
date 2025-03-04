@@ -6,7 +6,7 @@ import "nprogress/nprogress.css"; // Import CSS của NProgress
 
 export default function ProgressBar() {
   const pathname = usePathname();
-  const searchParams = useSearchParams(); // Theo dõi params
+  const searchParams = useSearchParams().toString(); // Theo dõi params
 
   useEffect(() => {
     NProgress.start();
@@ -16,7 +16,7 @@ export default function ProgressBar() {
       clearTimeout(timer);
       NProgress.done();
     };
-  }, [pathname, searchParams.toString()]); // Trigger khi pathname hoặc params thay đổi
+  }, [pathname, searchParams]); // Trigger khi pathname hoặc params thay đổi
 
   return null;
 }

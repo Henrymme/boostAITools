@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProgressBar from "./components/ProgressBar";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,9 @@ export default function RootLayout({
       suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-gray-100`}
       >
-        <ProgressBar /> {/* Luôn chạy khi chuyển route */}
+        <Suspense>
+          <ProgressBar /> {/* Luôn chạy khi chuyển route */}
+        </Suspense>
         <Navbar />
         {children}
         <Footer />

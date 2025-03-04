@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 export default function SearchBar({ placeholder }: { placeholder: string }) {
@@ -19,17 +20,19 @@ export default function SearchBar({ placeholder }: { placeholder: string }) {
   }, 300);
 
   return (
-    <div className="relative flex items-center border border-[#00ADB5] bg-[#1A1C2C] rounded-lg p-3 shadow-md w-full max-w-[600px] mx-auto">
-      <input
-        type="text"
-        placeholder={placeholder}
-        className="w-full p-2 bg-transparent text-white outline-none placeholder-gray-400"
-        onChange={(e) => handleSearch(e.target.value)}
-        defaultValue={searchParams.get("query")?.toString()}
-      />
-      <button className="ml-2 p-2 bg-[#00ADB5] text-white rounded-lg hover:bg-[#008A90] transition">
-        🔍
-      </button>
-    </div>
+    <Suspense>
+      <div className="relative flex items-center border border-[#00ADB5] bg-[#1A1C2C] rounded-lg p-3 shadow-md w-full max-w-[600px] mx-auto">
+        <input
+          type="text"
+          placeholder={placeholder}
+          className="w-full p-2 bg-transparent text-white outline-none placeholder-gray-400"
+          onChange={(e) => handleSearch(e.target.value)}
+          defaultValue={searchParams.get("query")?.toString()}
+        />
+        <button className="ml-2 p-2 bg-[#00ADB5] text-white rounded-lg hover:bg-[#008A90] transition">
+          🔍
+        </button>
+      </div>
+    </Suspense>
   );
 }

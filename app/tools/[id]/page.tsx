@@ -8,7 +8,7 @@ import { ToolsCard } from "@/lib/interface";
 import { fetchToolsData } from "@/lib/data";
 import Image from "next/image";
 
-const Rating = ({ rating }) => {
+const Rating = ({ rating }: { rating: number }) => {
   return (
     <div className="flex items-center gap-1 text-blue-600">
       {[...Array(5)].map((_, index) => (
@@ -29,9 +29,9 @@ export default async function ToolDetail(
   const tool = tools?.find((t) => t._id === params.id);
   return (
     <div className="max-w-4xl mx-auto p-6 bg-[#0F172A] text-[#E2E8F0] rounded-lg shadow-lg w-full h-screen">
-      <Breadcrumbs toolName={tool?.name} />
+      <Breadcrumbs toolName={tool?.name || ""} />
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-        <img src={tool?.imageUrl} alt={tool?.title} className="w-full max-w-[250px] h-auto rounded-lg shadow-md border border-gray-700" />
+        <Image src={tool?.imageUrl || ""} alt={tool?.title || ""} className="w-full max-w-[250px] h-auto rounded-lg shadow-md border border-gray-700" />
         <div>
           <h1 className="text-2xl font-bold text-cyan-400">{tool?.title}</h1>
           <p className="text-gray-400">{tool?.description}</p>
@@ -47,7 +47,7 @@ export default async function ToolDetail(
       </div>
 
       <div className="mt-4 flex gap-4 justify-center md:justify-start">
-        <Link href={tool?.link} target="_blank">
+        <Link href={tool?.link || ""} target="_blank">
           <Button className="bg-blue-600 text-white hover:bg-blue-500">Visit Site</Button>
         </Link>
       </div>
